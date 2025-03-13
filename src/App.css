@@ -1,0 +1,15 @@
+.App {
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #282c34;
+    color: white;
+  }
+  
+  .App-header {
+    max-width: 600px;
+    padding: 20px;
+  }
