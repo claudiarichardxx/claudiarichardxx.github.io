@@ -1,15 +1,434 @@
-.App {
-    text-align: center;
-    min-height: 100vh;
+/* App container styles */
+.app-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background-color: #282c34;
-    color: white;
+    justify-content: flex; /* Ensure content aligns to the top */
+    height: 100%; /* Full height */
+    min-height: 100vh; /* Ensure full screen height */
   }
   
-  .App-header {
-    max-width: 600px;
-    padding: 20px;
+  /* Hero Section */
+/* Hero Section with specific selector */
+/* App.css */
+.hero-section {
+    height: 70vh; /* Take up the full height of the viewport */
+    width: 100%; /* Full width of the screen */
+    background-image: url('bg_wide.jpg'); /* Replace with your image path */
+    background-size: cover; /* Cover the entire area */
+    background-position: center; /* Center the background */
+    display: flex; /* Flexbox to center the content */
+    justify-content: center; /* Horizontally center the content */
+    align-items: center; /* Vertically center the content */
+    color: white; /* Text color */
+    text-align: center; /* Center the text */
+  }
+  
+  
+  .hero-section h1 {
+    font-size: 3rem; /* Adjust text size for better visibility */
+    font-weight: bold;
+  }
+  
+  .hero-section p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+  }
+  
+  /* About Me Section */
+  .about-me {
+    background-color: #b9c8d4;
+    padding: 2rem;
+    margin-top: 1rem;
+    border-radius: 10px;
+    width: 80%; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-left: auto;
+    margin-right: auto;
+  }
+ /* #abb9c4*/
+  .timeline-titletile {
+    background-color:  #d3a5a5;
+    padding: 2rem;
+    margin-top: 1rem;
+    border-radius: 10px;
+    width: 80%; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  
+  .about-me h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .about-me p {
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  /* Projects Section */
+  .projects-section {
+    background-color:  #b9c8d4;
+    padding: 2rem;
+    margin-top: 1rem;
+    border-radius: 10px;
+    width: 80%; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Project Card Styles */
+  .project-card {
+    background-color:  #d3a5a5;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    width: 100%;
+    max-width: 100%;
+    transition: transform 0.3s ease;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    align-items: center;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+  
+  .project-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .project-card h3 {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .project-card p {
+    font-size: 1rem;
+  }
+  
+  /* Project Detail View */
+  .project-details {
+    background-color:   #d3a5a5;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+  }
+  
+  .project-details h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .center-align-h1 {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+    width: 100%; 
+    font-size: 1.5rem;           /* Ensure it takes up the full width */
+  }
+  
+  .project-details p {
+    font-size: 1rem;
+  }
+  
+  .project-details button {
+    background-color: #3182ce;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  
+  .project-details button:hover {
+    background-color: #2b6cb0;
+  }
+  
+  /* Optional styling for the contact section */
+.contact-details {
+    background-color: #b9c8d4;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 80%; /* Or any width you desire */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .contact-details h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  /* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.7); /* Dark background with transparency */
+    padding: 10px 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+  }
+  
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li {
+    padding: 10px 20px;
+    margin: 8px 0;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: #e09e9e; /* Blue background for buttons */
+    transition: background-color 0.3s ease;
+    position: relative;
+    z-index: 1000; /* Ensure sidebar is above other content */
+  }
+  
+  .sidebar ul li:hover {
+    background-color: #cc7b7b; /* Darker blue on hover */
+  }
+  
+  .sidebar ul li:active {
+    background-color:  #cc7b7b; /* Keep the same dark color when clicked */
+  }
+
+  /* Other Sections */
+  #summary-section, #about-section, #projects-section, #contact-section {
+    padding-right: 100px; /* Make sure content doesn't overlap the sidebar */
+  }
+
+  .timeline-container {
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px 0;
+  }
+  
+  .timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background-color: #b9c8d4; /* Line color */
+    transform: translateX(-50%);
+   
+  }
+  
+  .timeline {
+    list-style: none;
+    padding: 0;
+    position: relative;
+    width: 100%;
+  }
+  
+  .timeline-item {
+    position: relative;
+    margin: 20px 0;
+    cursor: pointer;
+    display: flex;
+    width: 100%;
+    transition: max-height 0.5s ease; 
+    align-items: center;
+
+  }
+  
+  .timeline-item:nth-child(odd) {
+    flex-direction: row-reverse; /* Alternate direction for odd items */
+    width: 100%;
+
+  }
+
+
+.project-media {
+    margin-top: 10px; /* Space above the media */
+    text-align: center; /* Center align media and caption */
+}
+
+.media-element {
+    max-width: 100%; /* Ensure images and videos are responsive */
+    height: 300px; /* Maintain aspect ratio */
+    border-radius: 5px; /* Optional: add border radius */
+}
+
+.media-caption {
+    margin-top: 5px; /* Space above the caption */
+    font-size: 0.9em; /* Smaller font size for captions */
+    color: #6c757d; /* Gray color for captions */
+    text-align: center; /* Center align captions */
+}
+
+.project-details-list {
+    background-color:   #d3a5a5;/* Light gray background for details */
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    list-style-type: disc;
+    list-style-position: inside; /* Remove default list styling */
+}
+
+  .timeline-content {
+    background-color:  #d3a5a5; /* White background for content */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 50%; /* Adjust width as needed */
+    position: relative;
+    transition: max-height 0.5s ease, opacity 0.5s ease; 
+
+    overflow: hidden;
+  }
+  .timeline-content.expanded {
+    max-height: 500px; /* Set a max-height that is larger than the expected content height */
+    opacity: 1; /* Fade in */
+}
+  .timeline-year {
+    font-weight: bold;
+    margin-left: 10px;
+    margin-right: 10px;
+    color:  #235782; /* Year color */
+    font-size: 1.2em;
+  }
+  
+  .timeline-title {
+    margin: 0;
+    font-size: 1em;
+  }
+  
+  .timeline-type {
+    font-style: italic;
+    color:  #235782;  /* Gray color for type */
+    margin-bottom: 5px;
+  }
+  
+  .timeline-details {
+    background-color: #f8f9fa; /* Light gray background for details */
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 100%;
+  }
+  
+  /* Active item styling */
+  .timeline-item.active .timeline-content {
+    background-color: #b9c8d4;/* Light blue background for active item */
+    border: 2px solid#d3a5a5; /* Border for active item */
+    width: 50%;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .timeline-container {
+      width: 95%;
+    }
+  
+    .timeline-content {
+      width: 100%; /* Full width on smaller screens */
+    }
+  
+    .timeline-item {
+      flex-direction: column; /* Stack items on small screens */
+    }
+  
+    .timeline-year {
+      margin: 10px 0; /* Adjust margin for stacked items */
+    }
+  }
+
+  .publications {
+    background-color:  #d3a5a5;
+    padding: 2rem;
+    margin-top: 1rem;
+    border-radius: 10px;
+    width: 80%; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.publications-list {
+    background-color:  #d3a5a5;
+    border-color:  #d3a5a5;
+    list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove padding */
+    line-break: auto;
+}
+
+.publication-abstract {
+    background-color: #b9c8d4; /* Light gray background for each item */
+    border-color:  #d3a5a5;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px; /* Space between items */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.2s; /* Smooth hover effect */
+}
+.publication-item {
+    background-color:  #b9c8d4;
+    border-color:  #d3a5a5;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px; /* Space between items */
+    margin-top: 10px;
+}
+
+.publication-item:hover {
+    background-color:  #b9c8d4;
+    border-color:  #d3a5a5;
+    transform: scale(1.02); /* Slightly enlarge on hover */
+}
+
+.publication-title {
+    background-color: #b9c8d4;
+    font-size: 1.25em; /* Larger font size for titles */
+    font-weight: bold; /* Bold titles */
+    margin: 5; /* Remove default margin */
+}
+
+.publication-link {
+    text-decoration: none; /* Remove underline from links */
+    color: #007bff; /* Link color */
+}
+
+.publication-link:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+.publication-details {
+    background-color: #b9c8d4;
+    margin-top: 5px; /* Space between title and details */
+    color: #6c757d; /* Gray color for details */
+}
+
+.timeline-details {
+    background-color: #f8f9fa; /* Light gray background for details */
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+   list-style-type:disc; /* Remove default list styling */
+   list-style-position: inside;
+  }
+  
+  .timeline-detail-item {
+    margin: 5px 0; /* Space between items */
   }
