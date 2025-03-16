@@ -367,7 +367,7 @@
 
 .publications-list {
     /*background-color:  #f290a38a;*/
-    border-color:  #f290a38a;
+    border-color:  #184062;
     list-style-type: none; /* Remove default list styling */
     padding: 0; /* Remove padding */
     line-break: auto;
@@ -383,7 +383,9 @@
     transition: transform 0.2s; /* Smooth hover effect */
 }
 .publication-item {
-    background-color:  #f290a38a; 
+    background-color:  #184062; 
+    color: #0c0a0a;
+    font-weight: bold;
     border-radius: 5px;
     padding: 15px;
     margin-bottom: 20px; /* Space between items */
