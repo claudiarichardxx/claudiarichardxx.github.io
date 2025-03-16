@@ -161,6 +161,7 @@
     width: 80%; /* Or any width you desire */
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: auto;
   }
   .contact-details h2 {
     font-size: 1.5rem;
@@ -432,3 +433,104 @@
   .timeline-detail-item {
     margin: 5px 0; /* Space between items */
   }
+
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .sidebar {
+        display: none; /* Hide sidebar on mobile */
+    }
+
+    .main-content {
+        margin-left: 0; /* No margin on mobile */
+        padding: 0px; /* Adjust padding for mobile */
+    }
+
+    .media-element {
+        max-width: 100%; /* Ensure images and videos are responsive */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    .media-caption {
+        font-size: 0.8em; /* Smaller font size for captions on mobile */
+    }
+
+    .timeline-content {
+        width: 100%; /* Full width on smaller screens */
+    }
+
+    .timeline-item {
+        flex-direction: column; /* Stack items on small screens */
+    }
+
+    .timeline-year {
+        margin: 10px 0; /* Adjust margin for stacked items */
+    }
+
+    .timeline-content.expanded {
+        max-height: 100%; /* Set a max-height that is larger than the expected content height */
+        opacity: 1; /* Fade in */
+    }
+     /* Active item styling */
+    .timeline-item.active .timeline-content {
+        background-color: #b9c8d4;/* Light blue background for active item */
+        border: 2px solid#d3a5a5; /* Border for active item */
+        width: 100%;
+    }
+     /* About Me Section */
+    .about-me {
+        width: 95%; 
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: none;
+    }
+
+    #summary-section, #about-section, #projects-section, #contact-section {
+        padding-right: 10px; /* Make sure content doesn't overlap the sidebar */
+    }
+
+    .projects-section {
+        padding: 0.5rem;
+        margin-top: 0.5rem;
+        border-radius: 10px;
+        width: 95%; 
+        margin-left: 0%;
+        margin-right: 0%;
+      }
+
+    .project-card {
+        padding: 0.5rem;
+        width: 100%;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        margin-left: 0%;
+      }
+
+      .project-details-list {
+        padding: 5px;
+        margin-top: 5px;
+    }
+
+    .publications {
+        padding: 0.5rem;
+        margin-top: 0.5rem;
+        border-radius: 10px;
+        width: 95%; 
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .contact-details {
+        padding: 0.5rem;
+        margin-top: 0.5rem;
+        border-radius: 10px;
+        width: 95%; /* Or any width you desire */
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 0.5rem;
+      }
+
+
+}

@@ -243,7 +243,7 @@ function App() {
             </section>
 
             {/* Projects Section */}
-            <section id="projects-section" className="projects-section min-h-screen bg-white text-black p-6 rounded-lg shadow-lg mt-10" style={{ position: 'relative', width: '80%', marginLeft: 'auto', marginRight: 'auto' }}>
+            <section id="projects-section" className="projects-section min-h-screen bg-white text-black p-6 rounded-lg shadow-lg mt-10" style={{ position: 'relative', marginLeft: 'auto', marginRight: 'auto' }}>
     <h1 className="bg-white text-black p-8 rounded-lg shadow-lg mt-10 center-align-h1">Projects</h1>
     {/* Projects List */}
     <div className="flex flex-col space-y-4 w-full items-center">
