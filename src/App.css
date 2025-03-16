@@ -37,22 +37,22 @@
   
   /* About Me Section */
   .about-me {
-    background-color: #b9c8d4;
+    background-color:#184062;
     padding: 2rem;
     margin-top: 1rem;
     border-radius: 10px;
-    width: 80%; 
+    width: 90%; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-left: auto;
     margin-right: auto;
   }
  /* #abb9c4*/
   .timeline-titletile {
-    background-color:  #d3a5a5;
+    background-color:  #f290a38a;
     padding: 2rem;
     margin-top: 1rem;
     border-radius: 10px;
-    width: 80%; 
+    width: 90%; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-left: auto;
     margin-right: auto;
@@ -67,16 +67,15 @@
   
   .about-me p {
     font-size: 1rem;
-    color: #333;
+    color: #eac9c9;
   }
   
   /* Projects Section */
   .projects-section {
-    background-color:  #b9c8d4;
-    padding: 2rem;
+    /*background-color:   #f290a38a;*/
     margin-top: 1rem;
     border-radius: 10px;
-    width: 80%; 
+    width: 90%; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-left: auto;
     margin-right: auto;
@@ -84,7 +83,7 @@
   
   /* Project Card Styles */
   .project-card {
-    background-color:  #d3a5a5;
+    background-color:  #f290a38a;
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -114,7 +113,8 @@
   
   /* Project Detail View */
   .project-details {
-    background-color:   #d3a5a5;
+    background-color:   #184062;
+    border-color: 2px solid#f290a38a;
     padding: 1.5rem;
     border-radius: 10px;
     margin-top: 1rem;
@@ -151,14 +151,14 @@
     background-color: #2b6cb0;
   }
   
-  /* Optional styling for the contact section */
+  /* Optional styling for the contact section */ 
 .contact-details {
-    background-color: #b9c8d4;
+    background-color: #f290a38a;
     padding: 2rem;
     margin-top: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 80%; /* Or any width you desire */
+    width: 90%; /* Or any width you desire */
     margin-left: auto;
     margin-right: auto;
     margin-bottom: auto;
@@ -199,28 +199,26 @@
     font-size: 16px;
     font-weight: bold;
     border-radius: 10px;
-    background-color: #e09e9e; /* Blue background for buttons */
+    background-color: #f290a38a; /* Blue background for buttons  #f290a38a; */
     transition: background-color 0.3s ease;
     position: relative;
     z-index: 1000; /* Ensure sidebar is above other content */
   }
   
   .sidebar ul li:hover {
-    background-color: #cc7b7b; /* Darker blue on hover */
+    background-color: #f290a38a; /* Darker blue on hover */
   }
   
   .sidebar ul li:active {
-    background-color:  #cc7b7b; /* Keep the same dark color when clicked */
+    background-color:  #f290a38a; /* Keep the same dark color when clicked */
   }
 
   /* Other Sections */
-  #summary-section, #about-section, #projects-section, #contact-section {
-    padding-right: 100px; /* Make sure content doesn't overlap the sidebar */
-  }
+
 
   .timeline-container {
     position: relative;
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     padding: 20px 0;
   }
@@ -275,12 +273,12 @@
 .media-caption {
     margin-top: 5px; /* Space above the caption */
     font-size: 0.9em; /* Smaller font size for captions */
-    color: #6c757d; /* Gray color for captions */
+    color: #dee0e1; /* Gray color for captions */
     text-align: center; /* Center align captions */
 }
 
 .project-details-list {
-    background-color:   #d3a5a5;/* Light gray background for details */
+    background-color:   #b9c8d4;/* Light gray background for details */
     padding: 10px;
     border-radius: 5px;
     margin-top: 10px;
@@ -289,7 +287,7 @@
 }
 
   .timeline-content {
-    background-color:  #d3a5a5; /* White background for content */
+    background-color:  #f290a38a; /* White background for content */
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -307,7 +305,7 @@
     font-weight: bold;
     margin-left: 10px;
     margin-right: 10px;
-    color:  #235782; /* Year color */
+    color:  #184062; /* Year color */
     font-size: 1.2em;
   }
   
@@ -318,7 +316,7 @@
   
   .timeline-type {
     font-style: italic;
-    color:  #235782;  /* Gray color for type */
+    color:  #184062; /* Gray color for type */
     margin-bottom: 5px;
   }
   
@@ -333,7 +331,7 @@
   /* Active item styling */
   .timeline-item.active .timeline-content {
     background-color: #b9c8d4;/* Light blue background for active item */
-    border: 2px solid#d3a5a5; /* Border for active item */
+    border: 2px solid#f290a38a; /* Border for active item */
     width: 50%;
   }
   
@@ -357,19 +355,19 @@
   }
 
   .publications {
-    background-color:  #d3a5a5;
+    /*background-color:  #f290a38a;*/
     padding: 2rem;
     margin-top: 1rem;
     border-radius: 10px;
-    width: 80%; 
+    width: 90%; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-left: auto;
     margin-right: auto;
 }
 
 .publications-list {
-    background-color:  #d3a5a5;
-    border-color:  #d3a5a5;
+    /*background-color:  #f290a38a;*/
+    border-color:  #f290a38a;
     list-style-type: none; /* Remove default list styling */
     padding: 0; /* Remove padding */
     line-break: auto;
@@ -377,7 +375,7 @@
 
 .publication-abstract {
     background-color: #b9c8d4; /* Light gray background for each item */
-    border-color:  #d3a5a5;
+    border-color:  #f290a38a;
     padding: 15px;
     border-radius: 5px;
     margin-bottom: 10px; /* Space between items */
@@ -385,8 +383,7 @@
     transition: transform 0.2s; /* Smooth hover effect */
 }
 .publication-item {
-    background-color:  #b9c8d4;
-    border-color:  #d3a5a5;
+    background-color:  #f290a38a; 
     border-radius: 5px;
     padding: 15px;
     margin-bottom: 20px; /* Space between items */
@@ -395,12 +392,13 @@
 
 .publication-item:hover {
     background-color:  #b9c8d4;
-    border-color:  #d3a5a5;
+    border-color:  #f290a38a; 
     transform: scale(1.02); /* Slightly enlarge on hover */
 }
 
 .publication-title {
     background-color: #b9c8d4;
+    
     font-size: 1.25em; /* Larger font size for titles */
     font-weight: bold; /* Bold titles */
     margin: 5; /* Remove default margin */
@@ -408,7 +406,7 @@
 
 .publication-link {
     text-decoration: none; /* Remove underline from links */
-    color: #007bff; /* Link color */
+    color: #1a4d80; /* Link color */
 }
 
 .publication-link:hover {
@@ -418,7 +416,11 @@
 .publication-details {
     background-color: #b9c8d4;
     margin-top: 5px; /* Space between title and details */
-    color: #6c757d; /* Gray color for details */
+    color: #383c40; /* Gray color for details */
+    font-family: Arial, sans-serif; /* Use a sans-serif font */
+    font-size: 1em; /* Smaller font size for details */
+    padding: 5px; /* Add padding to details */
+    border-radius: 5px;
 }
 
 .timeline-details {
@@ -473,7 +475,7 @@
      /* Active item styling */
     .timeline-item.active .timeline-content {
         background-color: #b9c8d4;/* Light blue background for active item */
-        border: 2px solid#d3a5a5; /* Border for active item */
+        border: 2px solid#f290a38a; /* Border for active item */
         width: 100%;
     }
      /* About Me Section */
@@ -485,10 +487,6 @@
         margin: 0;
         padding: 0;
         box-sizing: none;
-    }
-
-    #summary-section, #about-section, #projects-section, #contact-section {
-        padding-right: 10px; /* Make sure content doesn't overlap the sidebar */
     }
 
     .projects-section {
@@ -509,7 +507,7 @@
       }
 
       .project-details-list {
-        padding: 5px;
+        padding: 0px;
         margin-top: 5px;
     }
 
@@ -518,8 +516,8 @@
         margin-top: 0.5rem;
         border-radius: 10px;
         width: 95%; 
-        margin-left: auto;
-        margin-right: auto;
+        margin-left: 0%;
+        margin-right: 0%;
     }
 
     .contact-details {

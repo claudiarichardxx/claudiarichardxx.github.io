@@ -244,7 +244,7 @@ function App() {
 
             {/* Projects Section */}
             <section id="projects-section" className="projects-section min-h-screen bg-white text-black p-6 rounded-lg shadow-lg mt-10" style={{ position: 'relative', marginLeft: 'auto', marginRight: 'auto' }}>
-    <h1 className="bg-white text-black p-8 rounded-lg shadow-lg mt-10 center-align-h1">Projects</h1>
+    <h1 className="timeline-titletile bg-white text-black p-8 rounded-lg shadow-lg mt-10 center-align-h1">Projects</h1>
     {/* Projects List */}
     <div className="flex flex-col space-y-4 w-full items-center">
         {projects.map((project) => (
@@ -256,7 +256,7 @@ function App() {
                     onClick={() => handleProjectClick(project)} // Toggle project details on card click
                 >
                     <h3 className="text-3xl font-semibold">{project.title}</h3>
-                    <p className="text-lg">{project.description}</p>
+                    <p className="timeline-type text-lg">{project.description}</p>
                 </motion.div>
 
                 {/* Detailed View of the clicked project */}
@@ -303,8 +303,7 @@ function App() {
 
             {/* Publications Section */}
             <section id="publications-section" className="publications bg-white text-black p-8 rounded-lg shadow-lg mt-10">
-                <h2 className="text-4xl font-bold mb-4">Publications</h2>
-                <p className="text-lg">Here are some of my publications:</p>
+                <h2 className="timeline-titletile">Publications</h2>
                 <ul className="publications-list">
                     <li className="publication-item">
                         <h3 className="publication-abstract">
