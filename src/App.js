@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { motion,  } from 'framer-motion';
+import { motion,  AnimatePresence } from 'framer-motion';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub, faLinkedin, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import './App.css';
 
 
 const Timeline = ({ timelineData }) => {
     const [expandedItem, setExpandedItem] = useState(null);
-  
+    
     const handleItemClick = (index) => {
       // Toggle the expanded item
       setExpandedItem(expandedItem === index ? null : index);
@@ -24,7 +26,7 @@ const Timeline = ({ timelineData }) => {
               <motion.div
                 className={`timeline-content ${expandedItem === index ? 'expanded' : ''}`}
                 initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
+                animate={{ opacity: 0.9, y: 0 }}
                 exit={{ opacity: 0, y: 50 }}
                 transition={{ duration: 0.5 }}
               >
@@ -48,25 +50,78 @@ const Timeline = ({ timelineData }) => {
     );
   };
 
+  // Sidebar Component
+const Sidebar = ({ isOpen, onClose, onNavigate }) => (
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          className="sidebar"
+          initial={{ x: 300 }}
+          animate={{ x: 0 }}
+          exit={{ x: 300 }}
+          transition={{ type: 'spring', stiffness: 200, damping: 25 }}
+        >
+          <button className="close-sidebar-btn" onClick={onClose}>>>></button>
+          <ul>
+            <li onClick={() => { onNavigate('summary-section'); }}>Summary</li>
+            <li onClick={() => { onNavigate('timeline-section'); }}>Timeline</li>
+            <li onClick={() => { onNavigate('projects-section'); }}>Projects</li>
+            <li onClick={() => { onNavigate('publications-section'); }}>Publications</li>
+            <li onClick={() => { onNavigate('contact-section');}}>Contact Me!</li>
+          </ul>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+  
+  // Floating Open Button
+  const SidebarToggleButton = ({ onClick }) => (
+    <button className="open-sidebar-btn" onClick={onClick}>
+      ☰ Menu
+    </button>
+  );
+
 function App() {
 
     const [selectedProject, setSelectedProject] = useState(null);
+    const [sidebarOpen, setSidebarOpen] = useState(false);
 
+    const toggleSidebar = () => setSidebarOpen((prev) => !prev);
+    const scrollToSection = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+
+  
     const projects = [
+      {
+        id: 1,
+        title: 'Task Scheduler (2026)',
+        description: 'A web app for planning and organizing tasks with a clean, focused workflow.',
+        details: [
+            'Designed and built an end-to-end task scheduling experience with fast interactions and simple UX.',
+            'Has many themes to choose from to customize the look and feel of the application.',
+            'Passive scheduling of tasks - Adds tasks to a dump and lets users schedule them at a later time.',
+            'Permission to snooze tasks for a later time.',
+            'Uses firebase for authentication and storage.',
+            'Works on all devices and browsers, built using flutter and dart.',
+        ],
+        links: [
+            { label: 'Live application', url: 'https://task-scheduler-ff2aa.web.app/' },
+        ],
+    },
         {
-            id: 1,
+            id: 2,
             title: 'Decoding MBTI Personality Types from Written Text (2024)',
             description: 'BERT-based classification of user posts to predict personality types.',
             media: '/files/MBTI.jpg', 
             caption: 'Model Architecture',
             details: [
-                'Utilized BERT with a linear classifier to classify an individual\'s personality based on posts written by them.',
-                'Made the model interpretable by utilizing gradients to show important pieces of text.',
+                'Developed a BERT-based personality prediction model, leveraging a linear classifier for final classification.',
+                'Incorporated Integrated Gradients to enhancemodelexplainability and mitigate bias.',
+                'Demonstrated potential for improving personalization and user profiling in recommendation systems.',
                 'Skills: Python (Programming Language) · Gradients · Interpretable AI · Natural Language Processing (NLP) · BERT (Language Model) · Text Classification'
             ],
         },
         {
-            id: 2,
+            id: 3,
             title: 'Ethereum Price Forecasting (2024)',
             description: 'Comparative study of statistical and deep learning models for forecasting.',
             media: '/files/ethereum.png',
@@ -79,14 +134,14 @@ function App() {
             ],
         },
         {
-            id: 3,
+            id: 4,
             title: 'A Search Engine for Computer Science Papers (2023)',
             description: 'Web scraping, clustering, and semantic search using BERT.',
             media: '/files/SearchEngine.mov',
             caption: 'Search Engine Demo',
             details: [
                 'Scraped the website arxiv.org using BeautifulSoup to build a database of computer science papers.',
-                'Performed clustering to form clusters for smart indexing.',
+                'Performed clustering to form clusters for smart indexing, reducing search runtime by 50%.',
                 'Stored the abstracts and keywords of the papers in a locally hosted Elastic Search.',
                 'Used a BERT model for semantic query matching using cosine similarity as the distance measure.',
                 'Enabled syntactic query matching through Elastic Search.',
@@ -95,7 +150,7 @@ function App() {
             ],
         },
         {
-            id: 4,
+            id: 5,
             title: 'Ensemble Deep Learning for Diabetic Retinopathy Detection (2023)',
             description: 'Fine-tuned CNN models for enhanced diagnostic performance.',
             media: '/files/CNN-1.png',
@@ -104,27 +159,47 @@ function App() {
                 'Utilized transfer learning to fine-tune pre-trained CNN models on a large diabetic retinopathy dataset, significantly improving diagnostic performance.',
                 'Skills: Python (Programming Language) · Computer Vision · OpenCV · Convolutional Neural Networks (CNN) · AI for Healthcare'
             ],
-        },
+        }
     ];
 
 
     const timelineData = [
+      {
+        year: 'Oct 2025',
+        title: 'Started working as a Backend Software Engineer at Stephen Avenue Marketing',
+        type: 'Work Experience',
+        details: ['Architected the ERCOT RTM forecasting system as a modular, class-based Python package with reproducible training and inference.',
+          'Built a data-processing pipeline for ERCOT market data (RTM, DAM, weather, outages) including sanitization and feature handling.',
+          'Designed a feature-scoring framework combining Pearson/Spearman correlation, SNR ratios, and univariate R2 to evaluate predictive power and automatically reject unstable features.',
+          'Integrated model explainability using SHAP and permutation importance, producing stakeholder-ready visualizations and structured feature-importance reports.',
+          'Automated evaluation and reporting, generating multi-tab Excel summaries with error metrics and diagnostics.'
+        ]
+    },
+        {
+            year: 'Jan 2025',
+            title: 'Started working as an AI Data Specialist at Outlier AI',
+            type: 'Work Experience',
+            details: ['Served as a Computer Science and language expert, building upon high-quality post training datasets with an emphasis on Supervised Fine Tuning and Reinforcement Learning from Human Feedback(RLHF) for next generation LLMs.',
+              'Curated and evaluated data for multimodal, conversational, and Q&A LLMs to support robust AI development.',
+              'Reviewed prompts and model outputs to ensure alignment with legal, ethical, and safety guidelines in line with responsible AI practices across 10+ distinct use cases.'
+            ],
+        },
         {
             year: 'Jan 2025',
             title: 'Completed M.Sc Computer Science (AI + Thesis Stream)',
             type: 'Education',
-            details: ['University of Windsor (Sept 2023 – Jan 2025)'],
+            details: ['University of Windsor (Sept 2023 - Jan 2025)'],
         },
         {
             year: 'Sept 2023',
             title: 'Started Research Assistantship + Thesis Work',
             type: 'Work Experience',
             details: [
-                'Conducted research in large language models (LLMs) with a focus on instruction tuning for code generation.',
-                'Fine-tuned LLMs using Parameter Efficient Fine Tuning (PEFT) strategies to optimize distributed training performance.',
-                'Created synthetic datasets using `Evol-Instruct`, a method of evolving instruction-output pairs to improve data diversity.',
-                'Designed, developed, and refined prompts using prompt engineering techniques.',
-                'Evaluated model performance using the HumanEval and MBPP benchmarks.'
+                'Improved LLM code generation performance by instruction-tuning CodeLlama models with QLoRA and PEFT, reducing compute costs from ~$4000 to $15 and training time from ~1351 hours to 5 hours by optimizing only 0.37% of model parameters.',                
+                'Created synthetic datasets using Evol-Instruct to enhance model performance.',
+                'Developed and iteratively refined prompt engineering techniques, increasing code generation success rates on complex tasks.',
+                'Achieved a 6.7% pass@1 improvement on HumanEval and a 7.1% improvement on MBPP benchmarks after fine-tunin',
+                'Reduced failed test cases due to unterminated code lines by 97.3%, significantly enhancing code output reliability.'
             ],
         },
         {
@@ -132,28 +207,28 @@ function App() {
             title: 'Started Graduate Assistantship',
             type: 'Work Experience',
             details: [
-                'Coordinated the “Internship Project” course for four terms with industry partners, bridging gaps between academic and business objectives.'
+                'Managed 20+ teams as a Graduate Assistant for the Internship Project course (COMP8967), bridging academia with business.',
+                'Facilitated project management, team dynamics, and communication between students and industry partners.',
+                'Provided mentorship and support to students, enhancing their project management skills and industry readiness.',
             ],
         },
         {
             year: 'Apr 2021',
-            title: 'Joined as a full-time Data Analyst (NLP)',
+            title: 'Joined as a Data Scientist',
             type: 'Work Experience',
             details: [
-                'Worked on a chatbot project using GPT models (OpenAI API), LangChain, and Pinecone for Retrieval Augmented Generation (RAG).',
-                'Created a Python package that leverages hierarchical clustering algorithms to cluster large text datasets for bulk data labeling.',
-                'Automated the creation of new applications on wit.ai and the execution of repetitive SQL queries.',
-                'Performed sentiment and exploratory analysis on customer data.',
-                'Contributed to a churn prediction project using audio data and BERT models, achieving over 70% accuracy.',
-                'Built a chatbot using a Keras Long Short-Term Memory model for context prediction and trained it to identify over 50 categories of services, employed it to collect relevant information from the users, and used a MongoDB database for data storage.'
+                'Improved search query understanding by developing a BERT-based context prediction model, increasing accuracy by 25%, deployed on AWS EC2 with data in MongoDB for production use.',
+                'Automated repetitive tasks, including API-driven application development, testing, and SQL query execution, reducing manual effort by approximately 60%.',                
+                'Reduced training data curation time by over 70% and streamlined failure case identification by developing scalable hierarchical clustering algorithms for large-scale text datasets.',
+                'Developed scalable RAG (Retrieval Augmented Generation) pipelines for multiple client chatbots by setting up dedicated Pinecone vector databases and integrating LangChain and OpenAI APIs, enabling customized conversational AI for each client.',
+                'Developed a churn prediction model leveraging audio data, achieving over 70% accuracy, helping in targeted retention efforts.'
             ],
         },
         {
             year: 'Apr 2021',
-            title: 'Started Internship as Data Analyst Intern (NLP)',
+            title: 'Started Internship as Data Analyst Intern',
             type: 'Work Experience',
             details: [
-                'Sulekha.com (Apr 2021 – Jul 2021):',
                 'Performed Natural Language Processing for retrieving important data from audio files for efficient decision making.',
                 'Worked with the AWS Transcribe service, Python, and the Microsoft SQL server management tool.'
             ],
@@ -176,7 +251,6 @@ function App() {
         }
     ];
 
-
     
     const handleProjectClick = (project) => {
         // If the clicked project is already selected, set it to null to close
@@ -187,16 +261,16 @@ function App() {
         }
       };
     
-    const scrollToSection = (sectionId) => {
-        document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
-      };
+    // const scrollToSection = (sectionId) => {
+    //     document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+    //   };
 
     
   return (
     <div className="app-container">
-
+        
         {/* Sidebar */}
-      <div className="sidebar">
+      {/*<div className="sidebar">
         <ul>
           <li onClick={() => scrollToSection('summary-section')}>Summary</li>
           <li onClick={() => scrollToSection('timeline-section')}>Timeline</li>
@@ -204,7 +278,14 @@ function App() {
           <li onClick={() => scrollToSection('publications-section')}>Publications</li>
           <li onClick={() => scrollToSection('contact-section')}>Contact Me!</li>
         </ul>
-      </div>
+      </div>*/}
+
+       {/* Floating Menu Button */}
+       {!sidebarOpen && <SidebarToggleButton onClick={toggleSidebar} />}
+
+{/* Sidebar Drawer */}
+<Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} onNavigate={scrollToSection} />
+
 
       {/* Hero Section with Background Image */}
       <div className="hero-section">
@@ -230,10 +311,10 @@ function App() {
 
       {/* Summary Section */}
       <section id="summary-section" className="about-me bg-white text-white p-8 rounded-lg shadow-lg mt-10">
-        <h2 className="text-4xl font-bold mb-4">Professional Summary</h2>
-        <p className="text-lg">
-        Machine Learning Engineer specializing in LLM fine-tuning for code generation with 4 years of combined NLP experience. Master`s graduate in AI-focused Computer Science with expertise in machine learning models, instruction tuning, and prompt engineering. Industry experience (2.5 years) in Retrieval Augmented Generation (RAG), and large-scale NLP applications.
-        </p>
+        <h2 className="text-xl mb-8 text-white">Professional Summary</h2>
+        <p className="text-xl mb-8">  
+        Machine Learning Engineer specializing in LLM fine-tuning for code generation with 4 years of combined NLP experience. Master's graduate in AI-focused Computer Science with expertise in machine learning models, instruction tuning, and prompt engineering. Industry experience in Retrieval Augmented Generation (RAG), and large-scale NLP applications.        
+</p>
       </section>
 
             {/* Timeline Section */}
@@ -243,110 +324,136 @@ function App() {
             </section>
 
             {/* Projects Section */}
-            <section id="projects-section" className="projects-section min-h-screen bg-white text-black p-6 rounded-lg shadow-lg mt-10" style={{ position: 'relative', marginLeft: 'auto', marginRight: 'auto' }}>
-    <h1 className="timeline-titletile bg-white text-black p-8 rounded-lg shadow-lg mt-10 center-align-h1">Projects</h1>
-    {/* Projects List */}
-    <div className="flex flex-col space-y-4 w-full items-center">
-        {projects.map((project) => (
+            <section id = "projects-section" className="projects-section min-h-screen bg-white text-black p-6 rounded-lg shadow-lg mt-10" style={{ position: 'relative', marginLeft: 'auto', marginRight: 'auto' }}>
+            <h1 className = "timeline-titletile bg-white text-black p-8 rounded-lg shadow-lg mt-10 center-align-h1">Projects</h1>
+            {/* Projects List */}
+            <div className="flex flex-col space-y-4 w-full items-center">
+                {projects.map((project) => (
             <div key={project.id} className="w-full max-w-lg box-border mb-4">
                 {/* Render the Project Card */}
                 <motion.div
-                    className="project-card bg-gray-100 p-8 rounded-lg shadow-md cursor-pointer w-full"
-                    whileHover={{ scale: 1.02 }}
-                    onClick={() => handleProjectClick(project)} // Toggle project details on card click
+    className="project-card bg-gray-100 p-8 rounded-lg shadow-md cursor-pointer w-full"
+    whileHover={{ scale: 1.02 }}
+    onClick={() => handleProjectClick(project)}
+  >
+    <h3 className="timeline-type text-3xl font-semibold text-white">{project.title}</h3>
+    <p className="timeline-type text-lg">{project.description}</p>
+  </motion.div>
+
+  {/* Separate details box outside the card */}
+  {selectedProject && selectedProject.id === project.id && (
+    <motion.div
+      className="project-details bg-gray-200 p-6 rounded-lg shadow-lg mt-4 w-full"
+      initial={{ opacity: 0, y: 5 }}
+      animate={{ opacity: 0.95, y: 0 }}
+      exit={{ opacity: 0, y: 5 }}
+      transition={{ duration: 0.5 }}
+    >
+      <ul className="project-details-list list-disc pl-6">
+        {project.details.map((detail, i) => (
+          <li key={i} className="project-detail-item">{detail}</li>
+        ))}
+      </ul>
+
+      {project.links?.length > 0 && (
+        <div className="mt-4">
+          <ul className="project-details-list list-disc pl-6">
+            {project.links.map((link) => (
+              <li key={link.url} className="project-detail-item">
+                <a
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="publication-link"
                 >
-                    <h3 className="text-3xl font-semibold">{project.title}</h3>
-                    <p className="timeline-type text-lg">{project.description}</p>
-                </motion.div>
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
-                {/* Detailed View of the clicked project */}
-                {selectedProject && selectedProject.id === project.id && (
-                    <motion.div
-                        className="project-details bg-gray-200 p-6 rounded-lg shadow-lg mt-4"
-                        initial={{ opacity: 0, y: 50 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 50 }}
-                        transition={{ duration: 0.5 }}
-                    >
-                        <ul className="project-details-list">
-                            {project.details.map((detail, detailIndex) => (
-                                <li key={detailIndex} className="project-detail-item">
-                                    {detail}
-                                </li>
-                            ))}
-                        </ul>
-                        {/* Render media (image or video) */}
-                        {project.media && (
-                            <div className="project-media">
-                                {project.media.endsWith('.mp4') || project.media.endsWith('.mov') ? (
-                                    <video controls className="media-element" style={{ display: 'block', margin: '0 auto' }}>
-                                        <source src={project.media} type="video/mp4" />
-                                        Your browser does not support the video tag.
-                                    </video>
-                                ) : (
-                                    <img src={project.media} alt={project.title} className="media-element" style={{ display: 'block', margin: '0 auto' }} />
-                                )}
-                                {/* Render caption */}
-                                {project.caption && (
-                                    <p className="media-caption">{project.caption}</p>
-                                )}
+      {project.media && (
+        <div className="project-media mt-4">
+          {project.media.endsWith(".mp4") || project.media.endsWith(".mov") ? (
+            <video controls className="media-element mx-auto max-w-full">
+              <source src={project.media} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          ) : (
+            <img
+              src={project.media}
+              alt={project.title}
+              className="media-element mx-auto max-w-full"
+            />
+          )}
+          {project.caption && (
+            <p className="media-caption text-sm text-center mt-2">{project.caption}</p>
+          )}
+        </div>
+      )}
+    </motion.div>
+  )}
 
-                            </div>
-                        )}
-                        
-                    </motion.div>
-                )}
+                
             </div>
         ))}
     </div>
 </section>
 
             {/* Publications Section */}
+
             <section id="publications-section" className="publications bg-white text-black p-8 rounded-lg shadow-lg mt-10">
-                <h2 className="timeline-titletile">Publications</h2>
+                <h2 className="timeline-titletile bg-white text-black p-8 rounded-lg shadow-lg mt-10 center-align-h1">Publications</h2>
                 <ul className="publications-list">
                     <li className="publication-item">
                         <h3 className="publication-abstract">
                             <a href="https://scholar.uwindsor.ca/etd/9662/" target="_blank" rel="noopener noreferrer" className="publication-link">
-                            The Fine-Tuning Effect: A Study on Instruction Tuning for Code Generation
+                            The Fine-Tuning Effect: A Study on Instruction Tuning for Code Generation ~ Richard Davidson, Claudia Lois, "The Fine-Tuning Effect: A Study on Instruction Tuning for Code Generation" (2025). Electronic Theses and Dissertations. 9662.
                             </a>
                         </h3>
                         <p className="publication-details">
 Instruction tuning enhances language models by fine-tuning them on instruction-output pairs, particularly improving performance in code generation tasks. Models like OctoCoder and Wavecoder have shown significant gains in pass@k metrics. However, instruction tuning is resource-intensive and often inaccessible for users with limited computational power. Additionally, many existing datasets are too simplistic, hindering performance on complex tasks. In this research, we introduce a new Leetcode dataset featuring complex problems and Python implementations to improve instruction tuning. We fine-tune the CodeLlama model using this dataset and explore two fine-tuning methods: Instruction Tuning, which focuses on generated code tokens, and Instruction Modelling, which considers both instruction and code tokens for better context awareness. We also use Llama 3 in the Evol-Instruct method to generate additional instructions, avoiding closed-source models like GPT. Additionally, we investigate the impact of different LoRA ranks in Instruction Tuning and present a detailed analysis of failure cases on the HumanEval dataset. To address the high resource demands, we employ parameter-efficient techniques like LoRA (Low-Rank Adaptation) and qLoRA, which reduce model weights to 4-bit precision. Our evaluation, using the HumanEval and MBPP datasets, with pass@k as the primary metric, demonstrates a scalable, resource-efficient approach to instruction tuning for code generation.
 </p>
-Richard Davidson, Claudia Lois, "The Fine-Tuning Effect: A Study on Instruction Tuning for Code Generation" (2025). Electronic Theses and Dissertations. 9662.
                     </li>
                     <li className="publication-item">
                         <h3 className="publication-abstract">
                             <a href="https://ieeexplore.ieee.org/document/9841183" target="_blank" rel="noopener noreferrer" className="publication-link">
-                            Effective Behavioural Analysis using Polystore Data Catalog and Intelligent Learning
+                            Effective Behavioural Analysis using Polystore Data Catalog and Intelligent Learning ~ 2021 International Conference on Simulation, Automation & Smart Manufacturing (SASM)
                             </a>
                         </h3>
                         <p className="publication-details">
 This paper aims to design and implement an application usage behaviour analytics system to produce dynamic bundles personalized to each customer. A H2O Deep Learning model was first built to predict the list of products that are most likely to be reordered by each customer, on the basis of which bundle combinations were framed. The model was found to have an accuracy score of 83.04, a precision score of 84.7 and a recall score of 96.31. The products comprising each customer’s bundle were determined by a 3:1 ratio of products that the customer is most expected to purchase to the products that are less popular. This implementation starts with building a data lineage and catalog from multiple data sources with persistent data collected from transactions and product catalogs which was then used to identify, model, analyze behavioral patterns and collect insights in order to build the prediction model. This method of recommendation attempts to solve the cold-start effect of new products and to eliminate the popularity bias in bundle recommendation systems by producing personalized dynamic bundles in such a way that it improves the sales of unpopular products while also contributing to overall customer satisfaction. The technical stack that was used for implementing this idea includes Apache Spark, Mongodb Atlas and Apache H2O.</p>
-2021 International Conference on Simulation, Automation & Smart Manufacturing (SASM)
+
                     </li>
                     {/* Add more publications as needed */}
                 </ul>
             </section>
 
-
-
             {/* Contact Details Section */}
-            <section id="contact-section"  className="contact-details bg-blue-500 text-white p-8 rounded-lg shadow-lg mt-10">
-            <h2 className="text-4xl font-bold mb-4 text-center">Contact Details</h2>
-            <div className="flex flex-col items-center space-y-4">
-                <p className="text-lg">Feel free to reach out to me through any of the following methods:</p>
-                <div className="flex flex-col items-center space-y-2">
-                <p className="text-xl">📧 Email: <a href="mailto:claudiarichardxx@gmail.com" className="publication-link" target="_blank" rel="noopener noreferrer">claudiarichardxx@gmail.com</a></p>
-                <p className="text-xl">🌐 GitHub: <a href="https://github.com/claudiarichardxx" className="publication-link" target="_blank" rel="noopener noreferrer">github.com/claudiarichardxx</a></p>
-                <p className="text-xl">🔗 LinkedIn: <a href="https://www.linkedin.com/in/claudia-lois-richard-9099371bb/" className="publication-link" target="_blank" rel="noopener noreferrer">linkedin.com/in/claudia-lois-richard-9099371bb/</a></p>
-                </div>
-            </div>
+
+             <section id = "contact-section" className="publications bg-white text-black p-8 rounded-lg shadow-lg mt-10">
+                <h2 className = "timeline-titletile bg-white text-black p-8 rounded-lg shadow-lg mt-10 center-align-h1">Contact Me!</h2>
+                
+                <ul className = "contacts-list">
+                    <li className = "contact-item">
+                        <h3 className="text-xl"><FontAwesomeIcon icon={faGoogle} className="text-2xl mr-2" /> Email: <a href="mailto:claudiarichardxx@gmail.com" className="contact-link" target="_blank" rel="noopener noreferrer">claudiarichardxx@gmail.com</a>
+                        </h3>
+                        
+                    </li>
+                    <li className="contact-item">
+                    <h3 className="text-xl"><FontAwesomeIcon icon={faGithub} className="text-2xl mr-2" /> GitHub: <a href="https://github.com/claudiarichardxx" className="contact-link" target="_blank" rel="noopener noreferrer">github.com/claudiarichardxx</a></h3>                    
+                    </li>
+                    
+                    <li className="contact-item">
+                    <h3 className="text-xl"><FontAwesomeIcon icon={faLinkedin} className="text-2xl mr-2" /> LinkedIn: <a href="https://www.linkedin.com/in/claudia-lois-richard-9099371bb/" className="contact-link" target="_blank" rel="noopener noreferrer">linkedin.com/in/claudia-lois-richard-9099371bb/</a></h3>                    
+                    </li>
+
+                </ul>
             </section>
 
-
-        </div>
+            </div>
     );
 };
 
