@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion,  AnimatePresence } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin, faGoogle } from '@fortawesome/free-brands-svg-icons';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import './App.css';
 
 
@@ -66,6 +68,7 @@ const Sidebar = ({ isOpen, onClose, onNavigate }) => (
             <li onClick={() => { onNavigate('summary-section'); }}>Summary</li>
             <li onClick={() => { onNavigate('timeline-section'); }}>Timeline</li>
             <li onClick={() => { onNavigate('projects-section'); }}>Projects</li>
+            <li onClick={() => { onNavigate('articles-section'); }}>Articles</li>
             <li onClick={() => { onNavigate('publications-section'); }}>Publications</li>
             <li onClick={() => { onNavigate('contact-section');}}>Contact Me!</li>
           </ul>
@@ -80,6 +83,150 @@ const Sidebar = ({ isOpen, onClose, onNavigate }) => (
       ☰ Menu
     </button>
   );
+
+const Articles = () => {
+  const [articles, setArticles] = useState([]);
+  const [selectedArticle, setSelectedArticle] = useState(null);
+  const [articleContent, setArticleContent] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const readerRef = React.useRef(null);
+
+  useEffect(() => {
+    fetch(`${process.env.PUBLIC_URL}/articles/manifest.json`)
+      .then((res) => res.json())
+      .then(setArticles)
+      .catch(() => setArticles([]));
+  }, []);
+
+  const openArticle = async (slug) => {
+    setLoading(true);
+    try {
+      const res = await fetch(`${process.env.PUBLIC_URL}/articles/${slug}.md`);
+      const text = await res.text();
+      setArticleContent(text);
+      setSelectedArticle(slug);
+    } catch {
+      setArticleContent('Failed to load article.');
+      setSelectedArticle(slug);
+    }
+    setLoading(false);
+    setTimeout(() => readerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+  };
+
+  const closeArticle = () => {
+    setSelectedArticle(null);
+    setArticleContent('');
+  };
+
+  const allTags = [...new Set(articles.flatMap((a) => a.tags || []))].sort();
+
+  const filteredArticles = articles.filter((article) => {
+    if (!searchQuery.trim()) return true;
+    const q = searchQuery.toLowerCase();
+    return (
+      article.title.toLowerCase().includes(q) ||
+      article.summary.toLowerCase().includes(q) ||
+      article.tags?.some((tag) => tag.toLowerCase().includes(q))
+    );
+  });
+
+  const handleTagClick = (tag) => {
+    setSearchQuery((prev) => prev.toLowerCase() === tag.toLowerCase() ? '' : tag);
+  };
+
+  return (
+    <div className="articles-container">
+      <div className="articles-search-bar">
+        <input
+          type="text"
+          className="articles-search-input"
+          placeholder="Search articles by title, summary, or tags..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        {searchQuery && (
+          <button className="articles-search-clear" onClick={() => setSearchQuery('')}>
+            ✕
+          </button>
+        )}
+      </div>
+
+      <div className="articles-all-tags">
+        {allTags.map((tag) => (
+          <span
+            key={tag}
+            className={`article-filter-tag ${searchQuery.toLowerCase() === tag.toLowerCase() ? 'article-filter-tag-active' : ''}`}
+            onClick={() => handleTagClick(tag)}
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      <div className="articles-grid">
+        {filteredArticles.length === 0 && (
+          <p className="no-articles">
+            {articles.length === 0
+              ? 'No articles yet. Check back soon!'
+              : 'No articles match your search.'}
+          </p>
+        )}
+        {filteredArticles.map((article) => (
+          <motion.div
+            key={article.slug}
+            className={`article-card ${selectedArticle === article.slug ? 'article-card-active' : ''}`}
+            whileHover={{ scale: 1.02 }}
+            onClick={() => openArticle(article.slug)}
+          >
+            <h3 className="article-card-title">{article.title}</h3>
+            <span className="article-card-date">{article.date}</span>
+            <p className="article-card-summary">{article.summary}</p>
+            <div className="article-card-tags">
+              {article.tags?.map((tag) => (
+                <span
+                  key={tag}
+                  className={`article-tag ${searchQuery && tag.toLowerCase().includes(searchQuery.toLowerCase()) ? 'article-tag-match' : ''}`}
+                  onClick={(e) => { e.stopPropagation(); setSearchQuery(tag); }}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      <AnimatePresence>
+        {selectedArticle && (
+          <motion.div
+            className="article-reader"
+            ref={readerRef}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.4 }}
+          >
+            <button className="article-back-btn" onClick={closeArticle}>
+              ← Close Article
+            </button>
+            {loading ? (
+              <p className="article-loading">Loading...</p>
+            ) : (
+              <div className="article-markdown-scroll">
+                <div className="article-markdown">
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                    {articleContent}
+                  </ReactMarkdown>
+                </div>
+              </div>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
 
 function App() {
 
@@ -323,6 +470,12 @@ function App() {
             <Timeline timelineData={timelineData} />
             </section>
 
+            {/* Articles Section */}
+            <section id="articles-section" className="articles-section bg-white text-black p-8 rounded-lg shadow-lg mt-10">
+              <h2 className="timeline-titletile bg-white text-black p-8 rounded-lg shadow-lg mt-10 center-align-h1">Articles</h2>
+              <Articles />
+            </section>
+
             {/* Projects Section */}
             <section id = "projects-section" className="projects-section min-h-screen bg-white text-black p-6 rounded-lg shadow-lg mt-10" style={{ position: 'relative', marginLeft: 'auto', marginRight: 'auto' }}>
             <h1 className = "timeline-titletile bg-white text-black p-8 rounded-lg shadow-lg mt-10 center-align-h1">Projects</h1>
@@ -401,6 +554,8 @@ function App() {
         ))}
     </div>
 </section>
+
+            
 
             {/* Publications Section */}
 
