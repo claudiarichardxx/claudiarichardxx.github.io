@@ -896,6 +896,14 @@
   color: #1a1a2e;
 }
 
+.article-markdown img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1rem auto;
+  border-radius: 6px;
+}
+
 .publication-link:hover {
     text-decoration: underline; /* Underline on hover */
     color: #1f4872; /* Link color */
