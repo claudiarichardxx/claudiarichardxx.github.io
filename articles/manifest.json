@@ -1,8 +1,29 @@
 [
   {
+    "slug": "intro",
+    "title": "An attempt at a sound introduction to code generating large language models",
+    "date": "2026-04-01",
+    "summary": "Some thoughts on code generating large language models based on my research.",
+    "tags": ["LLM", "Code Generation"]
+  },
+  {
+    "slug": "training-data",
+    "title": "Data for tuning code LLMs",
+    "date": "2026-04-04",
+    "summary": "A look at the data used for instruction tuning",
+    "tags": ["LLM", "Code Generation", "Instruction Tuning", "Data"]
+  },
+  {
+    "slug": "training-objectives",
+    "title": "Objectives for tuning code LLMs",
+    "date": "2026-04-10",
+    "summary": "A look at the objectives used for instruction tuning",
+    "tags": ["LLM", "Code Generation", "Instruction Tuning", "Objectives"]
+  },
+  {
     "slug": "fine-tuning-llms-for-code-generation",
     "title": "Fine-Tuning LLMs for Code Generation: Lessons Learned",
-    "date": "2026-04-14",
+    "date": "2026-04-16",
     "summary": "A practical guide to instruction-tuning CodeLlama with QLoRA and PEFT, reducing compute costs from ~$4000 to $15 while improving benchmark performance.",
     "tags": ["LLM", "Fine-Tuning", "Code Generation", "QLoRA"]
   }
