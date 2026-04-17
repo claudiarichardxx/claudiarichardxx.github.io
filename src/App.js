@@ -241,72 +241,256 @@ function App() {
       {
         id: 1,
         title: 'Task Scheduler (2026)',
-        description: 'A web app for planning and organizing tasks with a clean, focused workflow.',
+        description: 'A lightweight task management system designed for flexible, low-friction planning.',
         details: [
-            'Designed and built an end-to-end task scheduling experience with fast interactions and simple UX.',
-            'Has many themes to choose from to customize the look and feel of the application.',
-            'Passive scheduling of tasks - Adds tasks to a dump and lets users schedule them at a later time.',
-            'Permission to snooze tasks for a later time.',
-            'Uses firebase for authentication and storage.',
-            'Works on all devices and browsers, built using flutter and dart.',
+          {
+            topic: 'Problem & Approach',
+            points: [
+              'Designed to address rigidity and clutter in traditional task management tools by separating task capture from scheduling.',
+              'Built a clean, fast, and responsive interface focused on minimizing friction in daily planning workflows.',
+            ],
+          },
+          {
+            topic: 'Key Features',
+            points: [
+              'Introduced passive scheduling: users can collect tasks first and organize them later.',
+              'Enabled snoozing and deferred scheduling to support flexible planning.',
+              'Customizable themes to enhance usability and personalization.',
+            ],
+          },
+          {
+            topic: 'Technical Decisions',
+            points: [
+              'Used Flutter for cross-platform consistency and fast UI performance.',
+              'Leveraged Firebase for real-time data storage and authentication.',
+            ],
+          },
+          {
+            topic: 'Takeaways',
+            points: [
+              'User experience design is as critical as technical implementation.',
+              'Flexible workflows significantly improve usability and adoption.',
+            ],
+          },
         ],
         links: [
-            { label: 'Live application', url: 'https://task-scheduler-ff2aa.web.app/' },
+          { label: 'Live application', url: 'https://task-scheduler-ff2aa.web.app/' },
         ],
-    },
-        {
-            id: 2,
-            title: 'Decoding MBTI Personality Types from Written Text (2024)',
-            description: 'BERT-based classification of user posts to predict personality types.',
-            media: '/files/MBTI.jpg', 
-            caption: 'Model Architecture',
-            details: [
-                'Developed a BERT-based personality prediction model, leveraging a linear classifier for final classification.',
-                'Incorporated Integrated Gradients to enhancemodelexplainability and mitigate bias.',
-                'Demonstrated potential for improving personalization and user profiling in recommendation systems.',
-                'Skills: Python (Programming Language) · Gradients · Interpretable AI · Natural Language Processing (NLP) · BERT (Language Model) · Text Classification'
+      },
+    
+      {
+        id: 2,
+        title: 'Decoding MBTI Personality Types from Written Text (2024)',
+        description: 'BERT-based system for personality classification from user-generated text.',
+        media: '/files/MBTI.jpg',
+        caption: 'Model Architecture',
+        details: [
+          {
+            topic: 'Problem',
+            points: [
+              'Personality classification from text is inherently subjective and prone to bias due to overlapping linguistic patterns.',
             ],
-        },
-        {
-            id: 3,
-            title: 'Ethereum Price Forecasting (2024)',
-            description: 'Comparative study of statistical and deep learning models for forecasting.',
-            media: '/files/ethereum.png',
-            caption: 'LSTM Model Performance',
-            details: [
-                'Experimented with traditional ARIMA, smooth-based, and moving average models for Ethereum price forecasting.',
-                'Used Pandas and Matplotlib for historical data analysis.',
-                'Created a modern LSTM model for better series forecasting and compared the results with the traditional approaches.',
-                'Skills: Python (Programming Language) · Statistical Modeling · Neural Networks · Long Short-term Memory (LSTM) · Time Series Forecasting'
+          },
+          {
+            topic: 'Approach',
+            points: [
+              'Developed a BERT-based classification pipeline with a linear head for MBTI prediction.',
+              'Leveraged contextual embeddings to capture nuanced personality-indicative language.',
             ],
-        },
-        {
-            id: 4,
-            title: 'A Search Engine for Computer Science Papers (2023)',
-            description: 'Web scraping, clustering, and semantic search using BERT.',
-            media: '/files/SearchEngine.mov',
-            caption: 'Search Engine Demo',
-            details: [
-                'Scraped the website arxiv.org using BeautifulSoup to build a database of computer science papers.',
-                'Performed clustering to form clusters for smart indexing, reducing search runtime by 50%.',
-                'Stored the abstracts and keywords of the papers in a locally hosted Elastic Search.',
-                'Used a BERT model for semantic query matching using cosine similarity as the distance measure.',
-                'Enabled syntactic query matching through Elastic Search.',
-                'Built a UI using NodeJS and JavaScript, and used FastAPI for Python API creation.',
-                'Skills: Python (Programming Language) · API Development · Semantic Search · FastAPI · Elasticsearch · JavaScript · Clustering · Web Scraping · Search Engine Development'
+          },
+          {
+            topic: 'Key Decisions',
+            points: [
+              'Used Integrated Gradients to interpret token-level importance and improve transparency.',
+              'Focused on explainability to identify bias and unreliable predictions.',
             ],
-        },
-        {
-            id: 5,
-            title: 'Ensemble Deep Learning for Diabetic Retinopathy Detection (2023)',
-            description: 'Fine-tuned CNN models for enhanced diagnostic performance.',
-            media: '/files/CNN-1.png',
-            caption: 'Model Architecture',
-            details: [
-                'Utilized transfer learning to fine-tune pre-trained CNN models on a large diabetic retinopathy dataset, significantly improving diagnostic performance.',
-                'Skills: Python (Programming Language) · Computer Vision · OpenCV · Convolutional Neural Networks (CNN) · AI for Healthcare'
+          },
+          {
+            topic: 'Challenges',
+            points: [
+              'High overlap in language across personality classes.',
+              'Dataset bias and subjectivity affecting model reliability.',
             ],
-        }
+          },
+          {
+            topic: 'Takeaways',
+            points: [
+              'Interpretability is essential in subjective NLP tasks.',
+              'High model confidence does not always imply meaningful classification.',
+            ],
+          },
+          {
+            topic: 'Tech Stack',
+            points: ['Python · BERT · Integrated Gradients · NLP'],
+          },
+        ],
+      },
+    
+      {
+        id: 3,
+        title: 'Ethereum Price Forecasting (2024)',
+        description: 'Comparative study of statistical and deep learning models for time-series forecasting.',
+        media: '/files/ethereum.png',
+        caption: 'LSTM Model Performance',
+        details: [
+          {
+            topic: 'Problem',
+            points: [
+              'Cryptocurrency prices exhibit high volatility and non-stationarity, making accurate forecasting challenging.',
+            ],
+          },
+          {
+            topic: 'Approach',
+            points: [
+              'Benchmarked traditional statistical models (ARIMA, moving averages) against LSTM-based deep learning models.',
+              'Performed exploratory data analysis to understand trends and noise patterns.',
+            ],
+          },
+          {
+            topic: 'Key Decisions',
+            points: [
+              'Used classical models as baselines for comparison.',
+              'Adopted LSTM to capture temporal dependencies and nonlinear relationships.',
+            ],
+          },
+          {
+            topic: 'Results',
+            points: [
+              'LSTM showed better adaptability to nonlinear trends compared to statistical methods.',
+              'Highlighted limitations of traditional models under volatile conditions.',
+            ],
+          },
+          {
+            topic: 'Challenges',
+            points: [
+              'Noisy and irregular market behavior.',
+              'Difficulty generalizing across time horizons.',
+            ],
+          },
+          {
+            topic: 'Takeaways',
+            points: [
+              'Model performance depends heavily on data stability.',
+              'Deep learning is more suitable for highly dynamic time-series data.',
+            ],
+          },
+          {
+            topic: 'Tech Stack',
+            points: ['Python · Pandas · Matplotlib · ARIMA · LSTM'],
+          },
+        ],
+      },
+    
+      {
+        id: 4,
+        title: 'A Search Engine for Computer Science Papers (2023)',
+        description: 'Hybrid search engine combining semantic and keyword-based retrieval.',
+        media: '/files/SearchEngine.mov',
+        caption: 'Search Engine Demo',
+        details: [
+          {
+            topic: 'Problem',
+            points: [
+              'Traditional keyword-based search fails to capture semantic intent in academic queries.',
+            ],
+          },
+          {
+            topic: 'Approach',
+            points: [
+              'Built a hybrid system combining Elasticsearch (syntactic search) with BERT-based semantic retrieval.',
+              'Scraped arXiv data to create a custom searchable dataset.',
+            ],
+          },
+          {
+            topic: 'Key Decisions',
+            points: [
+              'Used clustering to reduce search space and improve query latency.',
+              'Combined cosine similarity with embeddings for semantic ranking.',
+              'Maintained dual retrieval pipelines for speed and accuracy.',
+            ],
+          },
+          {
+            topic: 'Results',
+            points: [
+              'Reduced search runtime by ~50% using clustering-based indexing.',
+              'Improved relevance for abstract and ambiguous queries.',
+            ],
+          },
+          {
+            topic: 'Challenges',
+            points: [
+              'Balancing semantic accuracy with system performance.',
+              'Managing embedding computation overhead.',
+            ],
+          },
+          {
+            topic: 'Takeaways',
+            points: [
+              'Hybrid retrieval systems outperform single-method approaches.',
+              'Indexing strategy significantly impacts performance.',
+            ],
+          },
+          {
+            topic: 'Tech Stack',
+            points: ['Python · FastAPI · Elasticsearch · BERT · Clustering · JavaScript · Node.js'],
+          },
+        ],
+      },
+    
+      {
+        id: 5,
+        title: 'Ensemble Deep Learning for Diabetic Retinopathy Detection (2023)',
+        description: 'Ensemble CNN approach for robust medical image classification.',
+        media: '/files/CNN-1.png',
+        caption: 'Model Architecture',
+        details: [
+          {
+            topic: 'Problem',
+            points: [
+              'Medical image classification is challenging due to class imbalance and variability in image quality.',
+            ],
+          },
+          {
+            topic: 'Approach',
+            points: [
+              'Built an ensemble of fine-tuned CNN models using transfer learning.',
+              'Leveraged multiple architectures to improve robustness.',
+            ],
+          },
+          {
+            topic: 'Key Decisions',
+            points: [
+              'Used pre-trained models to compensate for limited labeled data.',
+              'Combined model outputs to reduce bias and variance.',
+            ],
+          },
+          {
+            topic: 'Results',
+            points: [
+              'Improved classification robustness compared to single-model approaches.',
+              'Enhanced generalization across diverse retinal images.',
+            ],
+          },
+          {
+            topic: 'Challenges',
+            points: [
+              'Class imbalance in dataset.',
+              'Variability in image resolution and quality.',
+            ],
+          },
+          {
+            topic: 'Takeaways',
+            points: [
+              'Ensemble methods significantly improve reliability in healthcare AI.',
+              'Transfer learning is essential for domain-specific tasks with limited data.',
+            ],
+          },
+          {
+            topic: 'Tech Stack',
+            points: ['Python · CNNs · OpenCV · Transfer Learning'],
+          },
+        ],
+      },
     ];
 
 
@@ -460,8 +644,9 @@ function App() {
       <section id="summary-section" className="about-me bg-white text-white p-8 rounded-lg shadow-lg mt-10">
         <h2 className="text-xl mb-8 text-white">Professional Summary</h2>
         <p className="text-xl mb-8">  
-        Machine Learning Engineer specializing in LLM fine-tuning for code generation with 4 years of combined NLP experience. Master's graduate in AI-focused Computer Science with expertise in machine learning models, instruction tuning, and prompt engineering. Industry experience in Retrieval Augmented Generation (RAG), and large-scale NLP applications.        
-</p>
+        Applied Machine Learning Scientist with experience building and fine-tuning models across LLMs, forecasting systems, and reinforcement
+learning settings. Proven track record of designing scalable training pipelines, evaluating model reasoning and predictive performance,
+and deploying data-driven systems in production environments. Skilled in bridging research and engineering.</p>
       </section>
 
             {/* Timeline Section */}
@@ -502,11 +687,20 @@ function App() {
       exit={{ opacity: 0, y: 5 }}
       transition={{ duration: 0.5 }}
     >
-      <ul className="project-details-list list-disc pl-6">
-        {project.details.map((detail, i) => (
-          <li key={i} className="project-detail-item">{detail}</li>
+      <div className="project-details-sections">
+        {project.details.map((section, i) => (
+          <div key={i} className="project-details-section">
+            {section.topic && (
+              <h4 className="project-details-topic">{section.topic}</h4>
+            )}
+            <ul className="project-details-list list-disc pl-6">
+              {section.points.map((point, j) => (
+                <li key={j} className="project-detail-item">{point}</li>
+              ))}
+            </ul>
+          </div>
         ))}
-      </ul>
+      </div>
 
       {project.links?.length > 0 && (
         <div className="mt-4">
@@ -564,7 +758,7 @@ function App() {
                 <ul className="publications-list">
                     <li className="publication-item">
                         <h3 className="publication-abstract">
-                            <a href="https://scholar.uwindsor.ca/etd/9662/" target="_blank" rel="noopener noreferrer" className="publication-link">
+                            <a href="https://uwindsor.scholaris.ca/items/73a6e3a6-de2d-4f2f-903f-fa2c648859f3" target="_blank" rel="noopener noreferrer" className="publication-link">
                             The Fine-Tuning Effect: A Study on Instruction Tuning for Code Generation ~ Richard Davidson, Claudia Lois, "The Fine-Tuning Effect: A Study on Instruction Tuning for Code Generation" (2025). Electronic Theses and Dissertations. 9662.
                             </a>
                         </h3>

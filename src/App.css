@@ -47,7 +47,7 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-left: auto;
     margin-right: auto;
-    text-align: justify;
+    text-align: left;
   }
  /* #abb9c4*/
   .timeline-titletile {
@@ -359,14 +359,38 @@
     text-align: center; /* Center align captions */
 }
 
+.project-details-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.project-details-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.project-details-topic {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #1a3a5c;
+    margin-bottom: 0.15rem;
+    padding-left: 4px;
+    border-left: 3px solid #f290a3;
+    padding-left: 8px;
+}
+
 .project-details-list {
-    background-color:   #f5fcffcb; /* Light gray background for details */
+    background-color:   #f5fcffcb;
     padding: 10px;
     border-radius: 20px;
-    margin-top: 10px;
+    margin-top: 0;
     list-style-type: disc;
-    list-style-position: inside; /* Remove default list styling */
-    text-align: justify;
+    list-style-position: inside;
+    text-align: left;
 }
 
   .timeline-content {
@@ -469,7 +493,7 @@
     list-style-type: none; /* Remove default list styling */
     padding: 0; /* Remove padding */
     line-break: auto;
-    text-align: justify;
+    text-align: left;
 }
 
 .contacts-list {
@@ -926,7 +950,7 @@
     margin-top: 10px;
    list-style-type:disc; /* Remove default list styling */
    list-style-position: inside;
-   text-align: justify;
+   text-align: left;
   }
   
   .timeline-detail-item {
