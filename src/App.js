@@ -240,7 +240,7 @@ function App() {
     const projects = [
       {
         id: 1,
-        title: 'Task Scheduler (2026)',
+        title: 'A Task Scheduler (2026)',
         description: 'A lightweight task management system designed for flexible, low-friction planning.',
         details: [
           {
@@ -272,9 +272,11 @@ function App() {
               'Flexible workflows significantly improve usability and adoption.',
             ],
           },
+          
         ],
+
         links: [
-          { label: 'Live application', url: 'https://task-scheduler-ff2aa.web.app/' },
+          { topic: 'Try it out', label: 'Live application', url: 'https://task-scheduler-ff2aa.web.app/' },
         ],
       },
     
@@ -497,13 +499,12 @@ function App() {
     const timelineData = [
       {
         year: 'Oct 2025',
-        title: 'Started working as a Backend Software Engineer at Stephen Avenue Marketing',
+        title: 'Started working as a Backend Software Engineer - AI Focus, at Stephen Avenue Marketing',
         type: 'Work Experience',
-        details: ['Architected the ERCOT RTM forecasting system as a modular, class-based Python package with reproducible training and inference.',
-          'Built a data-processing pipeline for ERCOT market data (RTM, DAM, weather, outages) including sanitization and feature handling.',
-          'Designed a feature-scoring framework combining Pearson/Spearman correlation, SNR ratios, and univariate R2 to evaluate predictive power and automatically reject unstable features.',
-          'Integrated model explainability using SHAP and permutation importance, producing stakeholder-ready visualizations and structured feature-importance reports.',
-          'Automated evaluation and reporting, generating multi-tab Excel summaries with error metrics and diagnostics.'
+        details: ['Led the design and development of an ERCOT RTM forecasting system, using 100+ market signals with pipeline reproducibility and consistent model training and evaluation.',
+          'Developed a feature selection framework combining correlation analysis, SNR, and R2, reducing noisy inputs and improving model stability and predictive performance.',
+          'Automated model evaluation workflows, reducing manual analysis time by 50% and standardizing performance tracking.',
+          'Implemented reward-based optimization strategies and reinforcement learning approaches for trade decision modeling, increasing revenue by 20%.'
         ]
     },
         {
@@ -564,15 +565,15 @@ function App() {
                 'Worked with the AWS Transcribe service, Python, and the Microsoft SQL server management tool.'
             ],
         },
-        {
-            year: 'May 2021',
-            title: 'Completed B.E Computer Science',
-            type: 'Education',
-            details: ['KCG College of Technology, Anna University (2017-2021)'],
-        },
+        // {
+        //     year: 'May 2021',
+        //     title: 'Completed B.E Computer Science',
+        //     type: 'Education',
+        //     details: ['KCG College of Technology, Anna University (2017-2021)'],
+        // },
         {
             year: 'Apr 2021',
-            title: 'Completed Research Project: Customer Behaviour Analysis',
+            title: 'Completed B.E Research Project: Customer Behaviour Analysis',
             type: 'Thesis',
             details: [
                 'Led a team of 3 for this project that involved feature engineering and analysis of customer data to predict the probability of reorder of previously purchased products.',
@@ -635,7 +636,7 @@ function App() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 1 }}
           >
-            Discover my projects, skills, and creative journey through this interactive experience.
+            I like building models, breaking them, and figuring out why they broke.
           </motion.p> 
         </div>
       </div>
@@ -651,19 +652,19 @@ and deploying data-driven systems in production environments. Skilled in bridgin
 
             {/* Timeline Section */}
             <section id="timeline-section" className="timeline bg-white text-black p-8 rounded-lg shadow-lg mt-10">
-            <h2 className="timeline-titletile ">A timeline of my key experiences</h2>
+            <h2 className="timeline-titletile ">How I got here</h2>
             <Timeline timelineData={timelineData} />
             </section>
 
             {/* Articles Section */}
             <section id="articles-section" className="articles-section bg-white text-black p-8 rounded-lg shadow-lg mt-10">
-              <h2 className="timeline-titletile bg-white text-black p-8 rounded-lg shadow-lg mt-10 center-align-h1">Articles</h2>
+              <h2 className="timeline-titletile bg-white text-black p-8 rounded-lg shadow-lg mt-10 center-align-h1">Things I've thought about</h2>
               <Articles />
             </section>
 
             {/* Projects Section */}
             <section id = "projects-section" className="projects-section min-h-screen bg-white text-black p-6 rounded-lg shadow-lg mt-10" style={{ position: 'relative', marginLeft: 'auto', marginRight: 'auto' }}>
-            <h1 className = "timeline-titletile bg-white text-black p-8 rounded-lg shadow-lg mt-10 center-align-h1">Projects</h1>
+            <h1 className = "timeline-titletile bg-white text-black p-8 rounded-lg shadow-lg mt-10 center-align-h1">Things I've built</h1>
             {/* Projects List */}
             <div className="flex flex-col space-y-4 w-full items-center">
                 {projects.map((project) => (
@@ -703,10 +704,15 @@ and deploying data-driven systems in production environments. Skilled in bridgin
       </div>
 
       {project.links?.length > 0 && (
-        <div className="mt-4">
+        <div className="project-details-section" style={{ marginTop: '1rem' }}>
           <ul className="project-details-list list-disc pl-6">
             {project.links.map((link) => (
               <li key={link.url} className="project-detail-item">
+                {link.topic && (
+                  <span className="project-details-topic" style={{ display: 'inline', border: 'none', paddingLeft: 0, marginRight: '0.4rem' }}>
+                    {link.topic}:
+                  </span>
+                )}
                 <a
                   href={link.url}
                   target="_blank"
@@ -754,7 +760,7 @@ and deploying data-driven systems in production environments. Skilled in bridgin
             {/* Publications Section */}
 
             <section id="publications-section" className="publications bg-white text-black p-8 rounded-lg shadow-lg mt-10">
-                <h2 className="timeline-titletile bg-white text-black p-8 rounded-lg shadow-lg mt-10 center-align-h1">Publications</h2>
+                <h2 className="timeline-titletile bg-white text-black p-8 rounded-lg shadow-lg mt-10 center-align-h1">Things I've written</h2>
                 <ul className="publications-list">
                     <li className="publication-item">
                         <h3 className="publication-abstract">
