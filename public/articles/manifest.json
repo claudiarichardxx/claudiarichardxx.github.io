@@ -42,6 +42,13 @@
     "tags": ["LLM", "Code Generation", "Instruction Tuning", "Objectives", "Results"]
   },
   {
+    "slug": "failure_modes",
+    "title": "Failure Modes before and after Instruction Tuning",
+    "date": "2026-04-21",
+    "summary": "A before and after analysis of failure modes in code generation",
+    "tags": ["LLM", "Code Generation", "Instruction Tuning", "Failure Modes"]
+  },
+  {
     "slug": "fine-tuning-llms-for-code-generation",
     "title": "Fine-Tuning LLMs for Code Generation: Lessons Learned",
     "date": "2026-04-16",
