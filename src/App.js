@@ -164,6 +164,7 @@ const Articles = () => {
         ))}
       </div>
 
+      <div className="articles-card-scroll-box">
       <div className="articles-grid">
         {filteredArticles.length === 0 && (
           <p className="no-articles">
@@ -195,6 +196,7 @@ const Articles = () => {
             </div>
           </motion.div>
         ))}
+      </div>
       </div>
 
       <AnimatePresence>
@@ -663,9 +665,10 @@ and deploying data-driven systems in production environments. Skilled in bridgin
             
 
             {/* Projects Section */}
-            <section id = "projects-section" className="projects-section min-h-screen bg-white text-black p-6 rounded-lg shadow-lg mt-10" style={{ position: 'relative', marginLeft: 'auto', marginRight: 'auto' }}>
+            <section id = "projects-section" className="projects-section bg-white text-black p-6 rounded-lg shadow-lg mt-10" style={{ position: 'relative', marginLeft: 'auto', marginRight: 'auto' }}>
             <h1 className = "timeline-titletile bg-white text-black p-8 rounded-lg shadow-lg mt-10 center-align-h1">Things I've built</h1>
             {/* Projects List */}
+            <div className="projects-scroll-box">
             <div className="flex flex-col space-y-4 w-full items-center">
                 {projects.map((project) => (
             <div key={project.id} className="w-full max-w-lg box-border mb-4">
@@ -753,6 +756,7 @@ and deploying data-driven systems in production environments. Skilled in bridgin
             </div>
         ))}
     </div>
+            </div>
 </section>
 
         {/* Articles Section */}
