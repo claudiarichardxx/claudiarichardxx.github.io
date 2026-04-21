@@ -240,7 +240,7 @@ function App() {
     const projects = [
       {
         id: 1,
-        title: 'A Task Scheduler (2026)',
+        title: 'A Task Scheduler (2026) - This one\'s live!',
         description: 'A lightweight task management system designed for flexible, low-friction planning.',
         details: [
           {
@@ -276,7 +276,7 @@ function App() {
         ],
 
         links: [
-          { topic: 'Try it out', label: 'Live application', url: 'https://task-scheduler-ff2aa.web.app/' },
+          { topic: 'Try it out', label: 'GoalDen', url: 'https://task-scheduler-ff2aa.web.app/' },
         ],
       },
     
@@ -650,17 +650,9 @@ learning settings. Proven track record of designing scalable training pipelines,
 and deploying data-driven systems in production environments. Skilled in bridging research and engineering.</p>
       </section>
 
-            {/* Timeline Section */}
-            <section id="timeline-section" className="timeline bg-white text-black p-8 rounded-lg shadow-lg mt-10">
-            <h2 className="timeline-titletile ">How I got here</h2>
-            <Timeline timelineData={timelineData} />
-            </section>
+            
 
-            {/* Articles Section */}
-            <section id="articles-section" className="articles-section bg-white text-black p-8 rounded-lg shadow-lg mt-10">
-              <h2 className="timeline-titletile bg-white text-black p-8 rounded-lg shadow-lg mt-10 center-align-h1">Things I've thought about</h2>
-              <Articles />
-            </section>
+            
 
             {/* Projects Section */}
             <section id = "projects-section" className="projects-section min-h-screen bg-white text-black p-6 rounded-lg shadow-lg mt-10" style={{ position: 'relative', marginLeft: 'auto', marginRight: 'auto' }}>
@@ -755,6 +747,12 @@ and deploying data-driven systems in production environments. Skilled in bridgin
     </div>
 </section>
 
+        {/* Articles Section */}
+        <section id="articles-section" className="articles-section bg-white text-black p-8 rounded-lg shadow-lg mt-10">
+              <h2 className="timeline-titletile bg-white text-black p-8 rounded-lg shadow-lg mt-10 center-align-h1">Things I've thought about</h2>
+              <Articles />
+            </section>
+
             
 
             {/* Publications Section */}
@@ -784,6 +782,11 @@ This paper aims to design and implement an application usage behaviour analytics
                     </li>
                     {/* Add more publications as needed */}
                 </ul>
+            </section>
+            {/* Timeline Section */}
+            <section id="timeline-section" className="timeline bg-white text-black p-8 rounded-lg shadow-lg mt-10">
+            <h2 className="timeline-titletile ">How I got here</h2>
+            <Timeline timelineData={timelineData} />
             </section>
 
             {/* Contact Details Section */}
