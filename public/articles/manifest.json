@@ -21,6 +21,27 @@
     "tags": ["LLM", "Code Generation", "Instruction Tuning", "Objectives"]
   },
   {
+    "slug": "rs_qn1",
+    "title": "Can More Complex Data Actually Improve Code Generation?",
+    "date": "2026-04-11",
+    "summary": "A look at the impact of more complex data on code generation performance",
+    "tags": ["LLM", "Code Generation", "Instruction Tuning", "Data", "Results"]
+  },
+  {
+    "slug": "rs_qn2",
+    "title": "Does Fine-Tuning Actually Improve Code Models?",
+    "date": "2026-04-12",
+    "summary": "A look at the impact of fine-tuning on code generation performance",
+    "tags": ["LLM", "Code Generation", "Instruction Tuning", "Results"]
+  },
+  {
+    "slug": "rs_qn3",
+    "title": "Do Training Objectives Actually Matter in Code Generation?",
+    "date": "2026-04-15",
+    "summary": "A look at the impact of training objectives on code generation performance",
+    "tags": ["LLM", "Code Generation", "Instruction Tuning", "Objectives", "Results"]
+  },
+  {
     "slug": "fine-tuning-llms-for-code-generation",
     "title": "Fine-Tuning LLMs for Code Generation: Lessons Learned",
     "date": "2026-04-16",

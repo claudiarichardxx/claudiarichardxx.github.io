@@ -236,6 +236,14 @@ function App() {
     const toggleSidebar = () => setSidebarOpen((prev) => !prev);
     const scrollToSection = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 
+    useEffect(() => {
+      const hash = window.location.hash;
+      if (hash) {
+        setTimeout(() => {
+          document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' });
+        }, 300);
+      }
+    }, []);
   
     const projects = [
       {
