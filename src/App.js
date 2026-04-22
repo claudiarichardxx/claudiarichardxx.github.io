@@ -660,9 +660,11 @@ learning settings. Proven track record of designing scalable training pipelines,
 and deploying data-driven systems in production environments. Skilled in bridging research and engineering.</p>
       </section>
 
-            
-
-            
+      {/* Articles Section */}
+      <section id="articles-section" className="articles-section bg-white text-black p-8 rounded-lg shadow-lg mt-10">
+              <h2 className="timeline-titletile bg-white text-black p-8 rounded-lg shadow-lg mt-10 center-align-h1">Things I've thought about</h2>
+              <Articles />
+            </section>
 
             {/* Projects Section */}
             <section id = "projects-section" className="projects-section bg-white text-black p-6 rounded-lg shadow-lg mt-10" style={{ position: 'relative', marginLeft: 'auto', marginRight: 'auto' }}>
@@ -759,11 +761,7 @@ and deploying data-driven systems in production environments. Skilled in bridgin
             </div>
 </section>
 
-        {/* Articles Section */}
-        <section id="articles-section" className="articles-section bg-white text-black p-8 rounded-lg shadow-lg mt-10">
-              <h2 className="timeline-titletile bg-white text-black p-8 rounded-lg shadow-lg mt-10 center-align-h1">Things I've thought about</h2>
-              <Articles />
-            </section>
+        
 
             
 
