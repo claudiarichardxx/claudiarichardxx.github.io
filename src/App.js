@@ -291,7 +291,7 @@ function App() {
       },
       {
         id: 2,
-        title: 'Book Recommender System (2026) - In Progress',
+        title: 'Book Recommender System (2026) - This one\'s also live!',
         description: 'A personalized book tracking and recommendation system designed to evolve into a learning-based recommender.',
         details: [
           {
