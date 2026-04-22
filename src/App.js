@@ -289,9 +289,56 @@ function App() {
           { topic: 'Try it out', label: 'GoalDen', url: 'https://task-scheduler-ff2aa.web.app/' },
         ],
       },
-    
       {
         id: 2,
+        title: 'Book Recommender System (2026) - In Progress',
+        description: 'A personalized book tracking and recommendation system designed to evolve into a learning-based recommender.',
+        details: [
+          {
+            topic: 'Problem & Approach',
+            points: [
+              'Designed to explore personalized recommendation systems by combining user preferences with external book metadata.',
+              'Built a system that first focuses on structured data collection (user ratings, reviews, and reading behavior) before introducing recommendation logic.',
+            ],
+          },
+          {
+            topic: 'Data & Integration',
+            points: [
+              'Integrated multiple external APIs (Open Library and Google Books) to fetch book metadata.',
+              'Implemented a "richness score" to dynamically select the most complete and informative data source per query.',
+            ],
+          },
+          {
+            topic: 'Current Features',
+            points: [
+              'Users can log books, add comments, and rate them using a star-based system.',
+              'Structured user interaction data is stored to support future recommendation modeling.',
+              'Includes a dedicated recommendations section designed for upcoming model integration.',
+            ],
+          },
+          {
+            topic: 'Next Steps (Modeling)',
+            points: [
+              'Planned implementation of recommendation algorithms (collaborative filtering / ranking-based approaches).',
+              'Exploring reinforcement learning or bandit-based methods for adaptive, user-specific recommendations.',
+              'Focus on balancing exploration vs. exploitation in recommendation quality.',
+            ],
+          },
+          {
+            topic: 'Takeaways',
+            points: [
+              'High-quality recommendation systems depend heavily on well-structured user interaction data.',
+              'Combining multiple data sources requires careful tradeoffs in completeness vs. consistency.',
+            ],
+          },
+        ],
+        links: [
+          { topic: 'Try it out', label: 'The Lantern Library', url: 'https://book-recommender-cc980.web.app/' },
+        ],
+      },
+    
+      {
+        id: 3,
         title: 'Decoding MBTI Personality Types from Written Text (2024)',
         description: 'BERT-based system for personality classification from user-generated text.',
         media: '/files/MBTI.jpg',
@@ -339,7 +386,7 @@ function App() {
       },
     
       {
-        id: 3,
+        id: 4,
         title: 'Ethereum Price Forecasting (2024)',
         description: 'Comparative study of statistical and deep learning models for time-series forecasting.',
         media: '/files/ethereum.png',
@@ -394,7 +441,7 @@ function App() {
       },
     
       {
-        id: 4,
+        id: 5,
         title: 'A Search Engine for Computer Science Papers (2023)',
         description: 'Hybrid search engine combining semantic and keyword-based retrieval.',
         media: '/files/SearchEngine.mov',
@@ -450,7 +497,7 @@ function App() {
       },
     
       {
-        id: 5,
+        id: 6,
         title: 'Ensemble Deep Learning for Diabetic Retinopathy Detection (2023)',
         description: 'Ensemble CNN approach for robust medical image classification.',
         media: '/files/CNN-1.png',
