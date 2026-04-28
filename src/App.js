@@ -66,10 +66,11 @@ const Sidebar = ({ isOpen, onClose, onNavigate }) => (
           <button className="close-sidebar-btn" onClick={onClose}>>>></button>
           <ul>
             <li onClick={() => { onNavigate('summary-section'); }}>Summary</li>
-            <li onClick={() => { onNavigate('timeline-section'); }}>Timeline</li>
-            <li onClick={() => { onNavigate('projects-section'); }}>Projects</li>
+            <li onClick={() => { onNavigate('live-deployments-section'); }}>Currently live</li>
             <li onClick={() => { onNavigate('articles-section'); }}>Articles</li>
+            <li onClick={() => { onNavigate('projects-section'); }}>Projects</li>            
             <li onClick={() => { onNavigate('publications-section'); }}>Publications</li>
+            <li onClick={() => { onNavigate('timeline-section'); }}>Timeline</li>
             <li onClick={() => { onNavigate('contact-section');}}>Contact Me!</li>
           </ul>
         </motion.div>
@@ -246,6 +247,98 @@ function App() {
         }, 300);
       }
     }, []);
+
+    const deployments = [
+      {
+        id: 1,
+        title: 'A Task Scheduler (2026) - This one\'s live!',
+        description: 'A lightweight task management system designed for flexible, low-friction planning.',
+        details: [
+          {
+            topic: 'Problem & Approach',
+            points: [
+              'Designed to address rigidity and clutter in traditional task management tools by separating task capture from scheduling.',
+              'Built a clean, fast, and responsive interface focused on minimizing friction in daily planning workflows.',
+            ],
+          },
+          {
+            topic: 'Key Features',
+            points: [
+              'Introduced passive scheduling: users can collect tasks first and organize them later.',
+              'Enabled snoozing and deferred scheduling to support flexible planning.',
+              'Customizable themes to enhance usability and personalization.',
+            ],
+          },
+          {
+            topic: 'Technical Decisions',
+            points: [
+              'Used Flutter for cross-platform consistency and fast UI performance.',
+              'Leveraged Firebase for real-time data storage and authentication.',
+            ],
+          },
+          {
+            topic: 'Takeaways',
+            points: [
+              'User experience design is as critical as technical implementation.',
+              'Flexible workflows significantly improve usability and adoption.',
+            ],
+          },
+          
+        ],
+
+        links: [
+          { topic: 'Try it out', label: 'GoalDen', url: 'https://task-scheduler-ff2aa.web.app/' },
+        ],
+      },
+      {
+        id: 2,
+        title: 'Book Recommender System (2026) - This one\'s also live!',
+        description: 'A personalized book tracking and recommendation system designed to evolve into a learning-based recommender.',
+        details: [
+          {
+            topic: 'Problem & Approach',
+            points: [
+              'Designed to explore personalized recommendation systems by combining user preferences with external book metadata.',
+              'Built a system that first focuses on structured data collection (user ratings, reviews, and reading behavior) before introducing recommendation logic.',
+            ],
+          },
+          {
+            topic: 'Data & Integration',
+            points: [
+              'Integrated multiple external APIs (Open Library and Google Books) to fetch book metadata.',
+              'Implemented a "richness score" to dynamically select the most complete and informative data source per query.',
+            ],
+          },
+          {
+            topic: 'Current Features',
+            points: [
+              'Users can log books, add comments, and rate them using a star-based system.',
+              'Structured user interaction data is stored to support future recommendation modeling.',
+              'Includes a dedicated recommendations section designed for upcoming model integration.',
+            ],
+          },
+          {
+            topic: 'Next Steps (Modeling)',
+            points: [
+              'Planned implementation of recommendation algorithms (collaborative filtering / ranking-based approaches).',
+              'Exploring reinforcement learning or bandit-based methods for adaptive, user-specific recommendations.',
+              'Focus on balancing exploration vs. exploitation in recommendation quality.',
+            ],
+          },
+          {
+            topic: 'Takeaways',
+            points: [
+              'High-quality recommendation systems depend heavily on well-structured user interaction data.',
+              'Combining multiple data sources requires careful tradeoffs in completeness vs. consistency.',
+            ],
+          },
+        ],
+        links: [
+          { topic: 'Try it out', label: 'The Lantern Library', url: 'https://book-recommender-cc980.web.app/' },
+        ],
+      },
+    
+    ];
   
     const projects = [
       {
@@ -706,6 +799,102 @@ function App() {
 learning settings. Proven track record of designing scalable training pipelines, evaluating model reasoning and predictive performance,
 and deploying data-driven systems in production environments. Skilled in bridging research and engineering.</p>
       </section>
+
+      
+            {/* live deployments Section */}
+            <section id="live-deployments-section" className="projects-section bg-white text-black p-6 rounded-lg shadow-lg mt-10" style={{ position: 'relative', marginLeft: 'auto', marginRight: 'auto' }}>
+            <h1 className = "timeline-titletile bg-white text-black p-8 rounded-lg shadow-lg mt-10 center-align-h1">Things that are currently live</h1>
+            {/* Projects List */}
+            <div className="live-deployments-list">
+            <div className="flex flex-col space-y-4 w-full items-center">
+                {deployments.map((deployment) => (
+            <div key={deployment.id} className="w-full max-w-lg box-border mb-4">
+                {/* Render the Project Card */}
+                <motion.div
+    className="project-card bg-gray-100 p-8 rounded-lg shadow-md cursor-pointer w-full"
+    whileHover={{ scale: 1.02 }}
+    onClick={() => handleProjectClick(deployment)}
+  >
+    <h3 className="timeline-type text-3xl font-semibold text-white">{deployment.title}</h3>
+    <p className="timeline-type text-lg">{deployment.description}</p>
+  </motion.div>
+
+  {/* Separate details box outside the card */}
+  {selectedProject && selectedProject.id === deployment.id && (
+    <motion.div
+      className="project-details bg-gray-200 p-6 rounded-lg shadow-lg mt-4 w-full"
+      initial={{ opacity: 0, y: 5 }}
+      animate={{ opacity: 0.95, y: 0 }}
+      exit={{ opacity: 0, y: 5 }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="project-details-sections">
+        {deployment.details.map((section, i) => (
+          <div key={i} className="project-details-section">
+            {section.topic && (
+              <h4 className="project-details-topic">{section.topic}</h4>
+            )}
+            <ul className="project-details-list list-disc pl-6">
+              {section.points.map((point, j) => (
+                <li key={j} className="project-detail-item">{point}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      {deployment.links?.length > 0 && (
+        <div className="project-details-section" style={{ marginTop: '1rem' }}>
+          <ul className="project-details-list list-disc pl-6">
+            {deployment.links.map((link) => (
+              <li key={link.url} className="project-detail-item">
+                {link.topic && (
+                  <span className="project-details-topic" style={{ display: 'inline', border: 'none', paddingLeft: 0, marginRight: '0.4rem' }}>
+                    {link.topic}:
+                  </span>
+                )}
+                <a
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="publication-link"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {deployment.media && (
+        <div className="project-media mt-4">
+          {deployment.media.endsWith(".mp4") || deployment.media.endsWith(".mov") ? (
+            <video controls className="media-element mx-auto max-w-full">
+              <source src={deployment.media} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          ) : (
+            <img
+              src={deployment.media}
+              alt={deployment.title}
+              className="media-element mx-auto max-w-full"
+            />
+          )}
+          {deployment.caption && (
+            <p className="media-caption text-sm text-center mt-2">{deployment.caption}</p>
+          )}
+        </div>
+      )}
+    </motion.div>
+  )}
+
+                
+            </div>
+        ))}
+    </div>
+            </div>
+</section>
 
       {/* Articles Section */}
       <section id="articles-section" className="articles-section bg-white text-black p-8 rounded-lg shadow-lg mt-10">
